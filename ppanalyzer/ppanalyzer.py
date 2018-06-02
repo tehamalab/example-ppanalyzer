@@ -77,9 +77,8 @@ def get_app(**kwargs):
     app = aiohttp.web.Application(**kwargs)
     app.add_routes(routes)
 
-    train_data = TRAIN_DATA
     app['classifier'] = Classifier()
-    app['classifier'].train_data = train_data
+    app['classifier'].train_data = TRAIN_DATA
     app['classifier'].train()
     return app
 

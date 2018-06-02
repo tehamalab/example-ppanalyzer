@@ -1,0 +1,55 @@
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/solid.css" integrity="sha384-Rw5qeepMFvJVEZdSo1nDQD5B6wX0m7c5Z/pLNvjkB14W6Yki1hKbSEQaX9ffUbWe" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css" integrity="sha384-GVa9GOgVQgOk+TNYXu7S/InPTfSDTtBalSgkgqQ7sCik56N9ztlkoTr2f/T44oKV" crossorigin="anonymous">
+
+        <title>Tatizo nini?</title>
+    </head>
+
+    <body class="text-center">
+        <form class="w-75 mx-auto mb-4">
+            <div class="lead my-4 py-3 text-muted">
+                <h1><i class="fas fa-exclamation fa-3x"></i></h1>
+            </div>
+
+            <h1 class="h3 mb-3 font-weight-normal">Tatizo nini?</h1>
+
+            <div class="input-group">
+                <label for="problem" class="sr-only">Tatizo nini?</label>
+                <textarea id='problem' class="form-control" name="text"
+                    placeholder="mfano; Maji hayatoki" autofocus></textarea>
+            </div>
+
+            <h4 class="mt-3" id="class-container">
+                <strong id="class" class="text-info"></strong>
+            </h4>
+
+        </form>
+
+        <footer class="fixed-bottom">
+            <p class="my-3 text-muted"><small>majaribio</small></p>
+        </footer>
+        
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+        <script>
+            $('#problem').on('input change', function() {
+                var text=$('#problem').val();
+                $.getJSON( "/analyze?text=" + text, function(data) {
+                    $('#class').text(data.class);
+                });
+            });
+        </script>
+    </body>
+</html>

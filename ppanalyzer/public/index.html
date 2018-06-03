@@ -52,9 +52,17 @@
         <script>
             $('#problem').on('input change', function() {
                 var text=$('#problem').val();
-                $.getJSON( "/analyze?text=" + text, function(data) {
-                    $('#class').text(data.class);
-                });
+                if (!text) {
+                    $('#class').text('');
+                } else {
+                    $.getJSON( "/analyze?text=" + text, function(data) {
+                        if (data.class) {
+                            $('#class').text(data.class);
+                        } else {
+                            $('#class').text('');
+                        }
+                    });
+                }
             });
         </script>
     </body>
